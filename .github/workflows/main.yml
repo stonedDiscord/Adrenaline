@@ -3,8 +3,8 @@ name: Build
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
-    name: Build
+  vita:
+    name: Build Vita part
     runs-on: ubuntu-latest
     container: vitasdk/vitasdk:latest
 
@@ -18,11 +18,6 @@ jobs:
         mkdir build
         cd build
         cmake ..
-        make
-      
-    - name: Build cef
-      run: |
-        cd cef
         make
 
     - name: Build kernel
@@ -47,4 +42,18 @@ jobs:
         mkdir build
         cd build
         cmake ..
+        make
+
+  psp:
+    name: Build PSP part
+    runs-on: ubuntu-latest
+    container: pspdev/pspsdk:latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Build cef
+      run: |
+        cd cef
         make
