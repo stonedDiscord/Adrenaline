@@ -1,0 +1,50 @@
+name: Build
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    container: vitasdk/vitasdk:latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Build bubble
+      run: |
+        cd bubble
+        mkdir build
+        cd build
+        cmake ..
+        make
+      
+    - name: Build cef
+      run: |
+        cd cef
+        make
+
+    - name: Build kernel
+      run: |
+        cd kernel
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+    - name: Build user
+      run: |
+        cd user
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+    - name: Build vsh
+      run: |
+        cd vsh
+        mkdir build
+        cd build
+        cmake ..
+        make
