@@ -47,7 +47,7 @@ jobs:
   psp:
     name: Build PSP part
     runs-on: ubuntu-latest
-    container: pspdev/pspsdk:latest
+    container: bkcsoft/pspsdk:latest
 
     steps:
     - name: Checkout
