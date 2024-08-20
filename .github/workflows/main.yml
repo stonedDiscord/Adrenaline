@@ -6,11 +6,11 @@ jobs:
   vita:
     name: Build Vita part
     runs-on: ubuntu-latest
-    container: vitasdk/vitasdk:latest
+    container: vitasdk/vitasdk:20240101
 
     steps:
     - name: Checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@v4
 
     - name: Build bubble
       run: |
@@ -51,7 +51,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@v3
 
     - name: Build cef
       run: |
